@@ -1,14 +1,35 @@
-<HTML>
-    <HEAD>
-        <SCRIPT src="https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse.js"></SCRIPT>
-        <SCRIPT src="https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_Gizmos_Ext.js"></SCRIPT>
-        <SCRIPT src="./AppConfig.js"></SCRIPT>
-        <SCRIPT src="./app.js"></SCRIPT>
-    </HEAD>
+<html>
+<head>
+    <script src="https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse.js"></script>
+    <script src="https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_Gizmos_Ext.js"></script>
+    <script src="./AppConfig.js"></script>
+    <script src="./app.js"></script>
+</head>
+<body>
+    <div id="message">Loading...</div>
+    <div id="selected_entity"></div>
+    <canvas tabindex="1" id="display_canvas" width="1280" height="720"></canvas>
 
-    <BODY>
-        <DIV id="message">Loading...</DIV>
-        <DIV id="selected_entity"></DIV>
-        <CANVAS tabindex="1" id="display_canvas" width="1280" height="720"></CANVAS>
-    </BODY>
-</HTML>
+    <audio id="audioPlayer" controls>
+        <source src="R2 D2 Scream.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+
+    <button id="playPauseButton">Play / Pause</button>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playPauseButton = document.getElementById('playPauseButton');
+
+        playPauseButton.addEventListener('click', function () {
+            if (audio.paused) {
+                audio.play();
+                playPauseButton.textContent = 'Pause';
+            } else {
+                audio.pause();
+                playPauseButton.textContent = 'Play';
+            }
+        });
+    </script>
+</body>
+</html>
