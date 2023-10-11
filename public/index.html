@@ -10,24 +10,22 @@
     <div id="selected_entity"></div>
     <canvas tabindex="1" id="display_canvas" width="1280" height="720"></canvas>
 
-    <audio id="audioPlayer" controls>
-        <source src=R2_D2_Scream.mp3 type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-
     <button id="playPauseButton">Play / Pause</button>
 
     <script>
-        const audio = document.getElementById('audioPlayer');
         const playPauseButton = document.getElementById('playPauseButton');
 
         playPauseButton.addEventListener('click', function () {
-            if (audio.paused) {
-                audio.play();
-                playPauseButton.textContent = 'Pause';
-            } else {
-                audio.pause();
+            const audioEntity = new THREE.Audio(0, 0, 0, 1, true, 1);
+            audioEntity.load('R2_D2_Scream.mp3'); // Remplacez par votre propre fichier audio
+            audioEntity.autoplay = true;
+
+            if (audioEntity.isPlaying) {
+                audioEntity.pause();
                 playPauseButton.textContent = 'Play';
+            } else {
+                audioEntity.play();
+                playPauseButton.textContent = 'Pause';
             }
         });
     </script>
